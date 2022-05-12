@@ -17,11 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-ef-jsS">
-                                <rect key="frame" x="87" y="94" width="240" height="128"/>
+                                <rect key="frame" x="30" y="94" width="354" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="1Lo-H3-yqk"/>
-                                    <constraint firstAttribute="width" secondItem="aLM-ef-jsS" secondAttribute="height" multiplier="15:8" id="DXS-DB-0VL"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3co-ly-0ss">
@@ -58,18 +57,27 @@
                                         <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
                                         <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" systemColor="systemRedColor"/>
+                                        <connections>
+                                            <action selector="redSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="ZyU-fG-dtz"/>
+                                        </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-RF-Ed7">
                                         <rect key="frame" x="-2" y="51" width="208" height="31"/>
                                         <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                         <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" systemColor="systemGreenColor"/>
+                                        <connections>
+                                            <action selector="greenSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="v9U-r4-jrR"/>
+                                        </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OyE-Yz-I6u">
                                         <rect key="frame" x="-2" y="102" width="208" height="31"/>
                                         <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
                                         <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" systemColor="systemBlueColor"/>
+                                        <connections>
+                                            <action selector="blueSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="md9-Q7-jYi"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
@@ -108,12 +116,23 @@
                             <constraint firstItem="3co-ly-0ss" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Ac2-fx-3Md"/>
                             <constraint firstItem="aLM-ef-jsS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Gb3-Fi-m0c"/>
                             <constraint firstItem="3co-ly-0ss" firstAttribute="top" secondItem="aLM-ef-jsS" secondAttribute="bottom" constant="70" id="Irs-dD-jfE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aLM-ef-jsS" secondAttribute="trailing" constant="30" id="KIc-tp-D8q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pKa-ea-GUn" secondAttribute="trailing" constant="30" id="MQh-fv-9ld"/>
                             <constraint firstItem="m9W-dU-jEf" firstAttribute="top" secondItem="aLM-ef-jsS" secondAttribute="bottom" constant="70" id="W6u-lv-woK"/>
                             <constraint firstItem="pKa-ea-GUn" firstAttribute="top" secondItem="aLM-ef-jsS" secondAttribute="bottom" constant="70" id="lGu-Mx-PLU"/>
                             <constraint firstItem="pKa-ea-GUn" firstAttribute="leading" secondItem="m9W-dU-jEf" secondAttribute="trailing" constant="15" id="m7f-qL-asb"/>
+                            <constraint firstItem="aLM-ef-jsS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="njh-LY-rBF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blueLabelValue" destination="uea-qv-W5D" id="StM-n1-Kfr"/>
+                        <outlet property="blueSlider" destination="OyE-Yz-I6u" id="7uR-ST-Ks1"/>
+                        <outlet property="greenLabelValue" destination="r5i-dC-EbX" id="rby-Cl-guK"/>
+                        <outlet property="greenSlider" destination="Ges-RF-Ed7" id="akM-0k-hDK"/>
+                        <outlet property="mainView" destination="aLM-ef-jsS" id="lo2-4j-KO3"/>
+                        <outlet property="redLabelValue" destination="8vR-Ha-Rpa" id="mif-55-cZg"/>
+                        <outlet property="redSlider" destination="apg-OF-xhC" id="Sst-zl-lpb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
