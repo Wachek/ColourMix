@@ -102,7 +102,10 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
-        guard let numberValue = Float(newValue) else { return }
+        guard let numberValue = Float(newValue), numberValue <= 1, numberValue >= 0 else {
+            showAlert(with: "Incorrect value", and: "Please, enter number")
+            return
+        }
         
         if textField == redTextField {
             red = numberValue
@@ -118,5 +121,24 @@ extension SettingsViewController: UITextFieldDelegate {
         updateColour()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
+
+extension SettingsViewController {
+    
+    private func showAlert(with title: String, and massage: String) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        let returnAction = UIAlertAction(title: "Return", style: .cancel) { _ in
+        }
+        alert.addAction(returnAction)
+        present(alert, animated: true)
+    }
 }
