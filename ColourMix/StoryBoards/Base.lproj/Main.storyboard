@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="FdF-vV-9fa"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="dzC-gP-UlH">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="deJ-I6-EGK">
@@ -33,7 +33,7 @@
         <!--SettingsViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="SettingsViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="ColourMix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SettingsViewController" id="BYZ-38-t0r" customClass="SettingsViewController" customModule="ColourMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,6 +136,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Done">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ArO-0M-5wg"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-uA-AWZ">
                                 <rect key="frame" x="254" y="248" width="50" height="134"/>
@@ -184,11 +187,14 @@
                     <connections>
                         <outlet property="blueLabelValue" destination="uea-qv-W5D" id="StM-n1-Kfr"/>
                         <outlet property="blueSlider" destination="OyE-Yz-I6u" id="7uR-ST-Ks1"/>
+                        <outlet property="blueTextField" destination="W2E-Pv-JVq" id="mVm-vu-rTq"/>
                         <outlet property="greenLabelValue" destination="r5i-dC-EbX" id="rby-Cl-guK"/>
                         <outlet property="greenSlider" destination="Ges-RF-Ed7" id="akM-0k-hDK"/>
+                        <outlet property="greenTextField" destination="29c-pa-3Im" id="DDg-da-4B1"/>
                         <outlet property="mainView" destination="aLM-ef-jsS" id="lo2-4j-KO3"/>
                         <outlet property="redLabelValue" destination="8vR-Ha-Rpa" id="mif-55-cZg"/>
                         <outlet property="redSlider" destination="apg-OF-xhC" id="Sst-zl-lpb"/>
+                        <outlet property="redTextField" destination="DHV-MF-qHk" id="aSl-Jf-lRF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -226,6 +232,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
