@@ -25,9 +25,9 @@ class SettingsViewController: UIViewController {
     
     var updatedBackgroundColour = UIColor.blue
     
-    var red: CGFloat = 0
-    var green: CGFloat = 0
-    var blue: CGFloat = 0
+    var red: Float = 0
+    var green: Float = 0
+    var blue: Float = 0
     
     var delegate: SettingsViewControllerDelegate!
     
@@ -38,34 +38,42 @@ class SettingsViewController: UIViewController {
         
         mainView.backgroundColor = updatedBackgroundColour
         
-        red = updatedBackgroundColour.cgColor.components![0]
-        green = updatedBackgroundColour.cgColor.components![1]
-        blue = updatedBackgroundColour.cgColor.components![2]
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
         
-        redSlider.value = Float(red)
-        greenSlider.value = Float(green)
-        blueSlider.value = Float(blue)
+        red = Float(updatedBackgroundColour.cgColor.components![0])
+        green = Float(updatedBackgroundColour.cgColor.components![1])
+        blue = Float(updatedBackgroundColour.cgColor.components![2])
         
-        redLabelValue.text = String(redSlider.value)
-        greenLabelValue.text = String(greenSlider.value)
-        blueLabelValue.text = String(blueSlider.value)
+        redSlider.value = red
+        greenSlider.value = green
+        blueSlider.value = blue
         
-        redTextField.text = String(redSlider.value)
-        greenTextField.text = String(greenSlider.value)
-        blueTextField.text = String(blueSlider.value)
+        redLabelValue.text = String(format: "%.2f", red)
+        greenLabelValue.text = String(format: "%.2f", green)
+        blueLabelValue.text = String(format: "%.2f", blue)
+        
+        redTextField.text = String(format: "%.2f", red)
+        greenTextField.text = String(format: "%.2f", green)
+        blueTextField.text = String(format: "%.2f", blue)
     
     }
 
     func updateColour() {
-        mainView.backgroundColor = UIColor.init(displayP3Red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
+        red = redSlider.value
+        green = greenSlider.value
+        blue = blueSlider.value
         
-        redLabelValue.text = String(round(redSlider.value * 100) / 100)
-        greenLabelValue.text = String(round(greenSlider.value * 100) / 100)
-        blueLabelValue.text = String(round(blueSlider.value * 100) / 100)
+        mainView.backgroundColor = UIColor.init(displayP3Red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
         
-        redTextField.text = String(round(redSlider.value * 100) / 100)
-        greenTextField.text = String(round(greenSlider.value * 100) / 100)
-        blueTextField.text = String(round(blueSlider.value * 100) / 100)
+        redLabelValue.text = String(format: "%.2f", red)
+        greenLabelValue.text = String(format: "%.2f", green)
+        blueLabelValue.text = String(format: "%.2f", blue)
+        
+        redTextField.text = String(format: "%.2f", red)
+        greenTextField.text = String(format: "%.2f", green)
+        blueTextField.text = String(format: "%.2f", blue)
         
     }
     
@@ -82,6 +90,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
+        view.endEditing(true)
         updatedBackgroundColour = mainView.backgroundColor!
         delegate.setNewColour(with: updatedBackgroundColour)
         dismiss(animated: true)
@@ -91,7 +100,23 @@ class SettingsViewController: UIViewController {
 
 
 extension SettingsViewController: UITextFieldDelegate {
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let newValue = textField.text else { return }
+        guard let numberValue = Float(newValue) else { return }
+        
+        if textField == redTextField {
+            red = numberValue
+            redSlider.value = red
+        } else if textField == greenTextField {
+            green = numberValue
+            greenSlider.value = green
+        } else {
+            blue = numberValue
+            blueSlider.value = blue
+        }
+        
+        updateColour()
+    }
     
     
 }
